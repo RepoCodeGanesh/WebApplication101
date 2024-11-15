@@ -1,0 +1,15 @@
+name: ${{ env.WORKFLOW_NAME }}
+
+on: [push]
+
+env:
+  WORKFLOW_NAME: "Build on ${{ github.ref_name }} by ${{ github.actor }}"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Print workflow name
+        run: echo "Workflow Name: ${{ env.WORKFLOW_NAME }}"
